@@ -22,6 +22,8 @@ bash python app.py
 
 2.upload the dataset
 
+[500.csv](https://github.com/user-attachments/files/21204005/500.csv)Text,Emotion,Label
+
 3. Run the code
  
 4. give your input and let the ai give resopnse and let the tool analyse the empathy.
@@ -51,3 +53,5 @@ https://github.com/user-attachments/assets/c1ac90cb-2ad6-4250-86a1-ac44351f198b
 **Conclusion**
 
 The Human-Like NLP Framework is about assessing and improving the AI’s performance in regard to human simulation while generating text. With the use of high end NLP along with recognition and rating of the expressed sentiment, the framework guarantees that the output text produced by AI is believable in terms of the emotion portrayed and the tone of conversations. It does not just pinpoint AI written text. It however, takes the evaluation one step further by assessing coherence, fluency, and affect. This raises the question of how the systems can be more compliant with the human standards. In addition to generating quality text, there is a focus on addressing quality of text by preventing biases and inconsistencies to maintain reliability and trust. This framework has an ability to transform the interactions between humans and computers as well as the communication between complex NLP technologies and the people.
+
+

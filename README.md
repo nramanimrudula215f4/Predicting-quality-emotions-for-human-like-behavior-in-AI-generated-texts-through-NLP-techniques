@@ -21,15 +21,19 @@ Launch Gradio app
 bash python app.py
 
 3.upload the dataset
+
+
 4. Run the code
-5. give your input and let the ai give resopnse and let the tool analyse the empathy.
+
+   
+6. give your input and let the ai give resopnse and let the tool analyse the empathy.
 
 💡 Applications
-Multilingual Sentiment & Emotion Analysis
-AI Content Regulation & Policy Compliance
-Literary and Social Research
-Customer Service and Feedback Analysis
-Academic Integrity & Plagiarism Detection
-Mental Health Chatbots
-Low-Resource Deployments (NGOs, Rural Tech)
-Fake News & Misinformation Detection
+#Multilingual Sentiment & Emotion Analysis
+#AI Content Regulation & Policy Compliance
+#Literary and Social Research
+#Customer Service and Feedback Analysis
+#Academic Integrity & Plagiarism Detection
+#Mental Health Chatbots
+#Low-Resource Deployments (NGOs, Rural Tech)
+#Fake News & Misinformation Detection

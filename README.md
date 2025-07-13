@@ -27,11 +27,23 @@ bash python app.py
 4. give your input and let the ai give resopnse and let the tool analyse the empathy.
 
 💡 Applications
-#Multilingual Sentiment & Emotion Analysis
-#AI Content Regulation & Policy Compliance
-#Literary and Social Research
-#Customer Service and Feedback Analysis
-#Academic Integrity & Plagiarism Detection
-#Mental Health Chatbots
-#Low-Resource Deployments (NGOs, Rural Tech)
-#Fake News & Misinformation Detection
+Multilingual Sentiment & Emotion Analysis
+
+AI Content Regulation & Policy Compliance
+
+Literary and Social Research
+
+Customer Service and Feedback Analysis
+
+Academic Integrity & Plagiarism Detection
+
+Mental Health Chatbots
+
+Low-Resource Deployments (NGOs, Rural Tech)
+
+Fake News & Misinformation Detection
+
+
+https://github.com/user-attachments/assets/c1ac90cb-2ad6-4250-86a1-ac44351f198b
+
+

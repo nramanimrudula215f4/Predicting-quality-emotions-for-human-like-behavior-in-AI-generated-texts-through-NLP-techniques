@@ -20,13 +20,11 @@ pip install -r requirements.txt`
 Launch Gradio app
 bash python app.py
 
-3.upload the dataset
+2.upload the dataset
 
-
-4. Run the code
-
-   
-6. give your input and let the ai give resopnse and let the tool analyse the empathy.
+3. Run the code
+ 
+4. give your input and let the ai give resopnse and let the tool analyse the empathy.
 
 💡 Applications
 #Multilingual Sentiment & Emotion Analysis

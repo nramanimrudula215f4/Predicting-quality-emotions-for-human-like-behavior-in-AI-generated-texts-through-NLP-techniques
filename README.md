@@ -14,7 +14,7 @@ Easy-to-use GUI built with Gradio.
 
 **How to Run:** 
 1. Clone this repo
-git clone https://github.com/Deekshitharachakatla/Astrocytoma-XAI-Analyzer.git`
+git clone (https://github.com/nramanimrudula215f4/Predicting-quality-emotions-for-human-like-behavior-in-AI-generated-texts-through-NLP-techniques.git)
 
 pip install -r requirements.txt`
 Launch Gradio app

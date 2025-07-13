@@ -1,0 +1,501 @@
+Text	Emotion	Label
+"I was feeling so happy about the little things today."	Joy	0
+"I'm feeling overwhelmed and frustrated with all the tasks."	Anger	0
+"Her smile always makes me feel so loved."	Love	0
+"I can't shake off the sadness of losing my childhood pet."	Sadness	0
+"That was the most unexpected turn of events!"	Surprise	0
+"Every time I go into a new place, I feel a wave of fear."	Fear	0
+"I feel so light-hearted, it's like I'm floating on 1r!"	Joy	1
+"I'm so fed up with the constant disruptions in my life!"	Anger	1
+"Love fills my heart when I think about my family."	Love	1
+"There's a heavy sadness weighing down on me today."	Sadness	1
+"Everything around me is so unpredictable, it caught me by surprise."	Surprise	1
+"I feel my heart race every time I'm in a crowded place."	Fear	1
+"I feel peaceful and content in this moment."	Joy	0
+"I'm so mad at myself for missing that opportunity."	Anger	0
+"Her words make me feel safe and cherished."	Love	0
+"Feeling down today, like nothing is going right."	Sadness	0
+"How did that even happen? I still can't believe it!"	Surprise	0
+"I'm terrified of what could happen next."	Fear	0
+"The joy of success feels so satisfying."	Joy	1
+"Why do people always seem to make things more complicated?"	Anger	1
+"My heart swells with love every time I see her smile."	Love	1
+"Sadness floods over me when I think about the past."	Sadness	1
+"The unexpected twist in the story had me shocked."	Surprise	1
+"I dread the idea of going into a crowded room."	Fear	1
+"I feel a deep sense of joy when I see my friends."	Joy	0
+"That comment made me furious, how can they be so insensitive?"	Anger	0
+"There's so much love in the way they care for each other."	Love	0
+"I feel the sadness of missing someone dear to me."	Sadness	0
+"I was completely stunned by their reaction."	Surprise	0
+"The fear of future keeps me awake at night."	Fear	0
+"I'm filled with joy at the thought of our future."	Joy	1
+"People always make me angry when they don't listen."	Anger	1
+"I can't stop thinking about how much I love you."	Love	1
+"There's a profound sadness in watching everything unravel."	Sadness	1
+"I didn't expect that outcome at all!"	Surprise	1
+"The anxiety of w1ting is eating me up inside."	Fear	1
+"I feel energized and happy today!"	Joy	0
+"I am angry that I didn't stand up for myself."	Anger	0
+"My heart is overflowing with love for those who support me."	Love	0
+"Today, the sadness is almost too much to bear."	Sadness	0
+"That plot twist was totally unexpected!"	Surprise	0
+"I feel a sense of dread whenever I think about tomorrow."	Fear	0
+"I'm overjoyed with how everything turned out."	Joy	1
+"People's behavior is driving me insane today."	Anger	1
+"My love for you is endless and unconditional."	Love	1
+"Today, the sadness lingers like a shadow."	Sadness	1
+"That sudden change left me in complete surprise."	Surprise	1
+"The fear of the unknown grips me tightly."	Fear	1
+"I feel light and carefree as the sun sets."	Joy	0
+"I can't believe how angry I am right now."	Anger	0
+"Love is the only thing that keeps me going."	Love	0
+"The sadness is overwhelming, I can hardly stand it."	Sadness	0
+"I didn't expect that at all, I was so surprised."	Surprise	0
+"My mind is filled with fear of what might happen next."	Fear	0
+"I feel a deep sense of joy when I see the sunrise."	Joy	1
+"Anger burns inside me every time I think about it."	Anger	1
+"I feel loved every time I hear those sweet words."	Love	1
+"I feel a wave of sadness every time I hear that song."	Sadness	1
+"What a shocking revelation! I'm still reeling."	Surprise	1
+"My hands tremble with fear every time I face the unknown."	Fear	1
+"The joy in my heart is indescribable right now!"	Joy	0
+"That mistake really made me angry at myself."	Anger	0
+"There's nothing I wouldn't do for the ones I love."	Love	0
+"The weight of sadness is heavy on my chest."	Sadness	0
+"I was genuinely surprised by how things turned out."	Surprise	0
+"The fear of loss is too much to handle sometimes."	Fear	0
+"A wave of joy washed over me when I saw them succeed."	Joy	1
+"It's infuriating how people never change."	Anger	1
+"I love the way they always know how to cheer me up."	Love	1
+"I can't shake the sadness of that lost opportunity."	Sadness	1
+"I was taken aback by the sudden turn of events."	Surprise	1
+"I'm constantly haunted by the fear of being judged."	Fear	1
+"Everything feels so peaceful and joyful today."	Joy	0
+"Why does everything always make me so angry?"	Anger	0
+"Love is the reason I get up every morning."	Love	0
+"I'm overwhelmed with sadness, I can't stop thinking about it."	Sadness	0
+"That was an incredible surprise! I never expected it."	Surprise	0
+"Fear consumes me whenever I think about the future."	Fear	0
+"The happiness I feel today is beyond words."	Joy	1
+"The anger I feel right now is all-consuming."	Anger	1
+"Every little act of kindness fills me with love."	Love	1
+"I feel an intense sadness thinking about the missed chances."	Sadness	1
+"I'm still processing the surprise of everything that happened."	Surprise	1
+"The fear of rejection is always in the back of my mind."	Fear	1
+"Nothing beats the joy I feel when I'm surrounded by loved ones."	Joy	0
+"The anger inside me could explode at any moment."	Anger	0
+"I can't stop smiling because of how much love I feel."	Love	0
+"There's a deep sadness in my heart I can't expl1n."	Sadness	0
+"I was surprised by how well everything worked out."	Surprise	0
+"I am terrified by the thought of falling."	Fear	0
+"Every moment today felt like pure joy."	Joy	0
+"Im so angry that no one took responsibility."	Anger	0
+"Love is in the little gestures we show each other."	Love	0
+"The sadness of leaving home is hard to handle."	Sadness	0
+"The surprise party left me speechless."	Surprise	0
+"I feel paralyzed with fear when I think about public speaking."	Fear	0
+"The sunrise this morning filled me with happiness."	Joy	1
+"Im furious about the way things were handled."	Anger	1
+"Love grows deeper with every shared moment."	Love	1
+"Im enveloped in sadness thinking about those times."	Sadness	1
+"The sudden announcement caught everyone off guard."	Surprise	1
+"Every step forward feels like a battle with fear."	Fear	1
+"Hearing their laughter fills me with joy."	Joy	0
+"I cant believe they made me so mad over something trivial."	Anger	0
+"Love is what makes life worth living."	Love	0
+"Im sad thinking about all the things we missed out on."	Sadness	0
+"I was shocked by the turn of events!"	Surprise	0
+"The eerie silence gave me chills of fear."	Fear	0
+"Joy radiates through me when I think about my accomplishments."	Joy	1
+"Im angry that no one understands my perspective."	Anger	1
+"Love is the warm glow of being understood."	Love	1
+"A deep sadness settles in when I reflect on my mistakes."	Sadness	1
+"The surprise gift was the best part of my day."	Surprise	1
+"I cant stop the creeping fear of being left behind."	Fear	1
+"Im overwhelmed with joy from seeing old friends ag1n."	Joy	0
+"Im angry that people dont respect boundaries."	Anger	0
+"My love for them grows stronger each day."	Love	0
+"Theres a quiet sadness in losing something familiar."	Sadness	0
+"I didnt expect to feel this surprised by the results."	Surprise	0
+"The shadows in the corner made my fear intensify."	Fear	0
+"Every moment feels like its bursting with joy!"	Joy	1
+"The sheer lack of communication made me so angry."	Anger	1
+"Love wraps around me like a comforting blanket."	Love	1
+"Sadness weighs on my shoulders like a heavy coat."	Sadness	1
+"The sudden applause startled me completely."	Surprise	1
+"I dread walking into that room every single time."	Fear	1
+"The simplest things today made me so happy."	Joy	0
+"The careless words made me feel furious."	Anger	0
+"Love is the reason we find meaning in life."	Love	0
+"Im still sad about the things I couldnt fix."	Sadness	0
+"The unexpected hug caught me by surprise."	Surprise	0
+"My heart races with fear when the phone rings at midnight."	Fear	0
+"Im thrilled to be part of something so meaningful."	Joy	1
+"The endless w1ting makes me angrier by the minute."	Anger	1
+"Love is the feeling of knowing you belong."	Love	1
+"The sadness of goodbyes lingers in the 1r."	Sadness	1
+"The surprise twist in the movie was brilliant!"	Surprise	1
+"The growing darkness fills me with fear."	Fear	1
+"I feel pure joy when I see my dreams coming true."	Joy	0
+"I cant get over how angry I am at their indifference."	Anger	0
+"Theres a beauty in love that words cant capture."	Love	0
+"The sadness of loss is something I cant shake off."	Sadness	0
+"I wasnt expecting the surprise, it left me stunned."	Surprise	0
+"The fear of the unknown keeps me cautious."	Fear	0
+"The beauty of nature fills me with boundless joy."	Joy	0
+"The audacity of their actions makes me so angry."	Anger	0
+"Love feels like a melody that never ends."	Love	0
+"Sadness crept into my heart as the day came to a close."	Sadness	0
+"The unexpected letter filled me with delightful surprise."	Surprise	0
+"Im trembling with fear at the thought of what lies ahead."	Fear	0
+"Joy dances in the sunlight of every new morning."	Joy	1
+"The careless mistake filled me with unrelenting anger."	Anger	1
+"Love is a quiet strength that holds us together."	Love	1
+"The weight of sadness makes it hard to breathe sometimes."	Sadness	1
+"The surprise package made my day so much brighter."	Surprise	1
+"The distant howl in the night sparked fear in my heart."	Fear	1
+"Laughter and joy filled the room during the celebration."	Joy	0
+"The heated argument left me feeling frustrated and angry."	Anger	0
+"Love is the bond that bridges even the widest gaps."	Love	0
+"I felt a deep sadness as I watched the final scene."	Sadness	0
+"The surprise fireworks lit up the sky and my heart."	Surprise	0
+"The eerie silence of the forest filled me with dread."	Fear	0
+"The success of the team brought immense joy to everyone."	Joy	1
+"I cant cont1n my anger when people are dishonest."	Anger	1
+"Love is the most powerful force in the universe."	Love	1
+"Sadness is a storm that rages silently inside."	Sadness	1
+"The surprise visit from an old friend was heartwarming."	Surprise	1
+"The growing shadows outside filled me with fear."	Fear	1
+"I felt pure joy watching the children play in the park."	Joy	0
+"The blatant disrespect made me so angry I couldnt speak."	Anger	0
+"Love is found in the smallest, most unexpected moments."	Love	0
+"The sadness of saying goodbye feels unbearable right now."	Sadness	0
+"The surprise gesture of kindness brought tears to my eyes."	Surprise	0
+"I couldnt shake the fear of being judged by others."	Fear	0
+"The joy of accomplishing a goal is unmatched."	Joy	1
+"Anger surged through me when I saw the unf1r treatment."	Anger	1
+"Love is the thread that connects all living things."	Love	1
+"Sadness lingers like a shadow on the edge of my heart."	Sadness	1
+"The unexpected announcement left everyone astonished."	Surprise	1
+"The fear of future keeps me awake at night."	Fear	1
+"Theres a joy in small victories that makes life worthwhile."	Joy	0
+"The injustice of the situation fills me with anger."	Anger	0
+"Love is the courage to trust someone completely."	Love	0
+"The sadness of a missed opportunity is hard to bear."	Sadness	0
+"The surprise phone call lifted my spirits instantly."	Surprise	0
+"The eerie creak of the door filled me with fear."	Fear	0
+"The joy of giving is a feeling I cherish deeply."	Joy	1
+"Anger burns like a wildfire when promises are broken."	Anger	1
+"Love is a lighthouse guiding us through lifes storms."	Love	1
+"Sadness feels like a heavy fog that wont lift."	Sadness	1
+"The surprise ending of the story was simply incredible."	Surprise	1
+"The fear of losing control is always lurking in my mind."	Fear	1
+"The joy of reuniting with an old friend is indescribable."	Joy	0
+"The reckless driver filled me with uncontrollable anger."	Anger	0
+"Love feels like finding home wherever you go."	Love	0
+"The sadness of losing my pet broke my heart."	Sadness	0
+"The surprise snowfall in April made everyone smile."	Surprise	0
+"The shadows in the corner stirred a deep fear within me."	Fear	0
+"Joy shines brightest in the darkest moments."	Joy	1
+"Anger boils when justice is delayed for too long."	Anger	1
+"Love is the silent understanding between two souls."	Love	1
+"Sadness fills the space where happiness once resided."	Sadness	1
+"The surprise concert tickets left me speechless."	Surprise	1
+"The fear of being forgotten is always haunting me."	Fear	1
+"Every new sunrise brings a fresh dose of joy."	Joy	0
+"The way they dismissed my efforts made me so angry."	Anger	0
+"Love is the anchor that keeps us steady in storms."	Love	0
+"The sadness of a lost dream lingers in my mind."	Sadness	0
+"The surprise cake for my birthday was unforgettable."	Surprise	0
+"The sound of footsteps in the dark gave me chills."	Fear	0
+"The joy of a child's laughter is the sweetest melody."	Joy	1
+"Anger is like a storm that clouds my judgment."	Anger	1
+"Love doesnt demand perfection; it celebrates flaws."	Love	1
+"Sadness wraps itself around my heart like a cold blanket."	Sadness	1
+"The surprise proposal left everyone in tears of happiness."	Surprise	1
+"Fear grips me when I think of falling ag1n."	Fear	1
+"Theres pure joy in achieving what seemed impossible."	Joy	0
+"The constant interruptions made me furious."	Anger	0
+"Love is the light that guides us out of darkness."	Love	0
+"The sadness of seeing an empty ch1r at dinner is overwhelming."	Sadness	0
+"The surprise party left me laughing and crying all at once."	Surprise	0
+"The fear of heights made the climb even more terrifying."	Fear	0
+"The smell of fresh flowers always brings me joy."	Joy	1
+"Anger consumes me when Im faced with blatant injustice."	Anger	1
+"Love whispers even when the world is loud."	Love	1
+"Sadness follows me like a shadow I cant escape."	Sadness	1
+"The surprise gift was exactly what Id been wishing for."	Surprise	1
+"Fear isnt just an emotion; its a constant presence."	Fear	1
+"The sunrise over the mount1ns filled me with pure joy."	Joy	0
+"The rude comment made me clench my fists in anger."	Anger	0
+"Love grows stronger in the face of challenges."	Love	0
+"The sadness of missing someone can feel unbearable."	Sadness	0
+"The surprise letter brought back so many memories."	Surprise	0
+"The fear of the unknown keeps me awake at night."	Fear	0
+"Joy spreads like wildfire when shared with others."	Joy	1
+"Anger surged when I realized I was being lied to."	Anger	1
+"Love heals wounds that time cant touch."	Love	1
+"Sadness lingers like a song stuck in my head."	Sadness	1
+"The surprise reunion with my sibling was a dream come true."	Surprise	1
+"The eerie silence after the storm filled me with fear."	Fear	1
+"The joy of finishing a good book is unmatched."	Joy	0
+"Anger rises when promises are broken without remorse."	Anger	0
+"Love is the glue that holds relationships together."	Love	0
+"The sadness of parting ways is like a heavy r1ncloud."	Sadness	0
+"The surprise message made my day so much better."	Surprise	0
+"Fear crept in as I realized I was being followed."	Fear	0
+"Theres joy in giving without expecting anything in return."	Joy	1
+"Anger is a fire that can burn everything around it."	Anger	1
+"Love speaks in actions more than words."	Love	1
+"Sadness is the price we pay for loving deeply."	Sadness	1
+"The surprise vacation plans were the best news ever."	Surprise	1
+"Fear grips me when Im left in complete darkness."	Fear	1
+"The joy of solving a complex problem is unparalleled."	Joy	0
+"His rude behavior filled me with seething anger."	Anger	0
+"Love is seeing beauty in every imperfection."	Love	0
+"The sadness of a silent goodbye lingers in my soul."	Sadness	0
+"The surprise announcement left the audience cheering."	Surprise	0
+"Fear surged when the power suddenly went out."	Fear	0
+"Happiness blooms like a flower in the spring."	Joy	1
+"Anger can be a powerful motivator if channeled right."	Anger	1
+"Love is a soft glow in the darkest night."	Love	1
+"Sadness flows through me like an unending river."	Sadness	1
+"The surprise encounter felt like a scene from a movie."	Surprise	1
+"Fear kept me from stepping into the unknown."	Fear	1
+"The laughter of children brings unfiltered joy to the heart."	Joy	0
+"Anger erupted when I realized they betrayed my trust."	Anger	0
+"Love grows stronger when it is nurtured with care."	Love	0
+"The sadness of future can lead to the sweetest success."	Sadness	0
+"The surprise arrival of an old friend was heartwarming."	Surprise	0
+"Fear of rejection holds me back from expressing myself."	Fear	0
+"Theres a unique joy in creating something from scratch."	Joy	1
+"Anger surged as I faced endless obstacles without support."	Anger	1
+"Love feels like being wrapped in a warm embrace."	Love	1
+"Sadness clouds my heart on r1ny afternoons."	Sadness	1
+"The surprise fireworks lit up the night sky with wonder."	Surprise	1
+"Fear crept in as the dark forest swallowed the light."	Fear	1
+"A perfect sunrise always fills my soul with joy."	Joy	0
+"I couldn't control my anger after hearing the unf1r judgment."	Anger	0
+"Love is found in the quiet, unspoken moments."	Love	0
+"The sadness of losing my childhood home feels eternal."	Sadness	0
+"The surprise gift left me speechless with gratitude."	Surprise	0
+"Fear washed over me as the storm grew louder."	Fear	0
+"Joy is contagious when shared among friends."	Joy	1
+"Anger burns like a wildfire, destroying everything in its path."	Anger	1
+"Love whispers softly, even in the loudest chaos."	Love	1
+"Sadness envelops me when I think of missed opportunities."	Sadness	1
+"The surprise party was a celebration of a lifetime."	Surprise	1
+"Fear tightened its grip as the shadows grew longer."	Fear	1
+"The sight of the r1nbow filled me with immense joy."	Joy	0
+"Her cutting words filled me with overwhelming anger."	Anger	0
+"Love is the melody that plays in the heart forever."	Love	0
+"The sadness of losing a close friend is unbearable."	Sadness	0
+"The surprise visit from my brother made my week."	Surprise	0
+"The eerie silence of the empty house filled me with fear."	Fear	0
+"Joy dances in the laughter of loved ones."	Joy	1
+"Anger feels like a storm raging inside me."	Anger	1
+"Love is a constant flame that never dies."	Love	1
+"Sadness weighs down my heart like an anchor."	Sadness	1
+"The surprise announcement turned an ordinary day magical."	Surprise	1
+"Fear lingers like a shadow, ever present and chilling."	Fear	1
+"The joy of a long-aw1ted reunion is indescribable."	Joy	0
+"The unf1r treatment made my blood boil with anger."	Anger	0
+"Love is a language that transcends words."	Love	0
+"The sadness of watching the seasons change is bittersweet."	Sadness	0
+"The surprise gift brought tears of happiness to my eyes."	Surprise	0
+"The unknown path ahead filled me with trepidation and fear."	Fear	0
+"Joy sparkles brightest in the simplest moments."	Joy	1
+"Anger roars when patience is stretched too thin."	Anger	1
+"Love grows in the smallest acts of kindness."	Love	1
+"Sadness feels like a quiet echo in the distance."	Sadness	1
+"The surprise discovery of an old photo brought back memories."	Surprise	1
+"Fear of future kept me from chasing my dreams."	Fear	1
+"Theres a profound joy in achieving your dreams."	Joy	0
+"Their constant criticism left me boiling with anger."	Anger	0
+"Love is a gentle touch that soothes the soul."	Love	0
+"The sadness of saying goodbye is the hardest part."	Sadness	0
+"The surprise win felt like a miracle come true."	Surprise	0
+"Fear struck me when I couldnt find my way back."	Fear	0
+"Joy illuminates even the darkest corners of the heart."	Joy	1
+"Anger erupts when my efforts are disregarded."	Anger	1
+"Love thrives in the little moments we share."	Love	1
+"Sadness lingers in the places we once found happiness."	Sadness	1
+"The surprise meeting felt like destiny at work."	Surprise	1
+"Fear of the dark makes every shadow come alive."	Fear	1
+"The sound of waves crashing fills me with endless joy."	Joy	0
+"His harsh tone sent a wave of anger through me."	Anger	0
+"Love is the bond that holds two hearts together."	Love	0
+"The sadness of an unanswered letter is deeply haunting."	Sadness	0
+"The surprise sunset over the mount1ns was breathtaking."	Surprise	0
+"Fear took over as the footsteps drew closer."	Fear	0
+"The joy of discovering a new passion is unmatched."	Joy	1
+"Anger is the fire that consumes reason and logic."	Anger	1
+"Love is the warmth of a hug after a long day."	Love	1
+"Sadness feels like a lingering cloud on a r1ny day."	Sadness	1
+"The surprise visit from an old friend brought tears of joy."	Surprise	1
+"Fear grips you when youre on the edge of the unknown."	Fear	1
+"Hearing her laughter was pure joy in my heart."	Joy	0
+"The betrayal filled me with uncontrollable anger."	Anger	0
+"Love is a garden that flourishes with care."	Love	0
+"The sadness in her eyes told a story of p1n."	Sadness	0
+"The surprise snowfall turned the morning magical."	Surprise	0
+"Fear paralyzed me as I heard the howling wind outside."	Fear	0
+"Joy is the melody that makes life worth living."	Joy	1
+"Anger surged as I read the unjust accusations."	Anger	1
+"Love whispers softly, even when the world screams."	Love	1
+"Sadness crept in as I watched the fading sunset."	Sadness	1
+"The surprise message brought a smile to my face."	Surprise	1
+"Fear clawed at my chest as the darkness enveloped me."	Fear	1
+"The joy of dancing under the r1n is indescribable."	Joy	0
+"The insults were sharp enough to ignite my anger."	Anger	0
+"Love heals wounds that time alone cannot."	Love	0
+"The sadness of an empty ch1r at the dinner table is overwhelming."	Sadness	0
+"The surprise appearance of a shooting star was magical."	Surprise	0
+"Fear took hold as the bridge swayed in the wind."	Fear	0
+"Joy blooms in the company of loved ones."	Joy	1
+"Anger is a storm that shakes the calmest seas."	Anger	1
+"Love is the compass that guides a wandering heart."	Love	1
+"Sadness lingers like the scent of r1n on dry earth."	Sadness	1
+"The surprise encounter felt like fate intervening."	Surprise	1
+"Fear looms in the silence before the storm."	Fear	1
+"Joy fills the heart when kindness is shared."	Joy	0
+"The unjust treatment stoked a burning anger within me."	Anger	0
+"Love finds its way, even through the hardest times."	Love	0
+"The sadness of a fading memory grips my heart."	Sadness	0
+"The surprise celebration was like a dream come true."	Surprise	0
+"Fear crept in as the shadows danced on the walls."	Fear	0
+"The joy of learning something new is invigorating."	Joy	1
+"Anger flares up when promises are broken carelessly."	Anger	1
+"Love glows like the soft embers of a dying fire."	Love	1
+"Sadness whispers in the quiet of a lonely room."	Sadness	1
+"The surprise success brought cheers and tears alike."	Surprise	1
+"Fear builds as uncert1nty clouds the path ahead."	Fear	1
+"The joy of creating something beautiful is unparalleled."	Joy	0
+"The accusations sparked a deep and lasting anger."	Anger	0
+"Love shines brightest in moments of darkness."	Love	0
+"The sadness of saying goodbye lingers like an echo."	Sadness	0
+"The surprise gift was beyond anything I could imagine."	Surprise	0
+"Fear surged as the storm thundered closer and closer."	Fear	0
+"Joy bubbles over in the simple pleasures of life."	Joy	1
+"Anger simmers when injustices go unnoticed."	Anger	1
+"Love is the tether that keeps us grounded."	Love	1
+"Sadness fills the spaces where laughter once lived."	Sadness	1
+"The surprise win felt like a f1rytale ending."	Surprise	1
+"Fear whispered doubts into my ears, but I pressed on."	Fear	1
+"The joy of reuniting with an old friend is priceless."	Joy	0
+"The unf1rness of the situation left me fuming with anger."	Anger	0
+"Love wraps its arms around those who dare to trust."	Love	0
+"The sadness of unspoken words weighs heavy on my heart."	Sadness	0
+"The surprise proposal was the happiest moment of my life."	Surprise	0
+"Fear froze me in place as I faced the unknown."	Fear	0
+"Joy shines brightest after a storm."	Joy	1
+"Anger crackles like fire in the face of injustice."	Anger	1
+"Love p1nts the world in colors you never knew existed."	Love	1
+"Sadness flows through the spaces left by broken promises."	Sadness	1
+"The surprise discovery felt like unearthing buried treasure."	Surprise	1
+"Fear is the shadow of the unknown w1ting to strike."	Fear	1
+"The joy of completing a tough challenge is fulfilling."	Joy	0
+"The criticism pierced me, igniting an uncontrollable anger."	Anger	0
+"Love is the thread that binds even broken hearts."	Love	0
+"The sadness of a forgotten dream can be unbearable."	Sadness	0
+"The surprise arrival brought warmth to the coldest night."	Surprise	0
+"Fear gripped me as I stood at the edge of the cliff."	Fear	0
+"Joy blooms in moments of unexpected kindness."	Joy	1
+"Anger is the spark that can light a path or burn it."	Anger	1
+"Love radiates through actions more than words."	Love	1
+"Sadness lingers like a haunting memory."	Sadness	1
+"The surprise phone call changed everything for the better."	Surprise	1
+"Fear lurks in the corners of the imagination."	Fear	1
+"The joy of watching the sunrise fills me with peace."	Joy	0
+"Her words cut deep, igniting a flame of anger in me."	Anger	0
+"Love feels like a safe harbor in a stormy sea."	Love	0
+"The sadness of parting ways weighs heavy on my soul."	Sadness	0
+"The surprise fireworks lit up the night sky beautifully."	Surprise	0
+"Fear creeps in when silence grows too loud."	Fear	0
+"The joy of helping someone in need is beyond words."	Joy	1
+"Anger is the storm that clouds judgment and reason."	Anger	1
+"Love is the light that guides us through the darkest paths."	Love	1
+"Sadness echoes in the spaces of a once-filled home."	Sadness	1
+"The surprise reunion was a moment I'll never forget."	Surprise	1
+"Fear grips the heart when all control is lost."	Fear	1
+"The joy of dancing to my favorite song is unmatched."	Joy	0
+"His betrayal left a bitter taste of anger in my mouth."	Anger	0
+"Love grows in the smallest acts of kindness."	Love	0
+"Sadness is the shadow that follows when hope fades."	Sadness	0
+"The surprise letter brought tears of happiness."	Surprise	0
+"Fear paralyzed me as I heard the distant growl."	Fear	0
+"The joy of reaching a long-aw1ted goal is fulfilling."	Joy	1
+"Anger boils over when lies replace trust."	Anger	1
+"Love whispers through the cracks of a broken heart."	Love	1
+"Sadness feels like the weight of a thousand storms."	Sadness	1
+"The surprise applause after my performance was incredible."	Surprise	1
+"Fear lingered as the shadows deepened around me."	Fear	1
+"The joy of finding an old photo brought back memories."	Joy	0
+"The unf1r blame made my anger impossible to control."	Anger	0
+"Love is the constant in an ever-changing world."	Love	0
+"Sadness fills the room when memories fade."	Sadness	0
+"The surprise visit from a loved one was everything I needed."	Surprise	0
+"Fear clutched my chest as I ventured into the unknown."	Fear	0
+"Joy comes naturally when you embrace the present moment."	Joy	1
+"Anger ignites when injustice becomes unbearable."	Anger	1
+"Love anchors the soul even in the roughest waters."	Love	1
+"Sadness whispers secrets of loss and longing."	Sadness	1
+"The surprise discovery of a hidden talent felt magical."	Surprise	1
+"Fear kept me awake as the storm raged outside."	Fear	1
+"The joy of creating art is a language of its own."	Joy	0
+"The rejection stung and anger simmered beneath the surface."	Anger	0
+"Love is the bridge that connects two wandering souls."	Love	0
+"Sadness settles like fog, blurring everything in sight."	Sadness	0
+"The surprise arrival of my best friend made my day."	Surprise	0
+"Fear grew as the unfamiliar path stretched before me."	Fear	0
+"Joy blooms like wildflowers in the heart of spring."	Joy	1
+"Anger roars like thunder in moments of betrayal."	Anger	1
+"Love is a melody that soothes the weary heart."	Love	1
+"Sadness seeps through the cracks of a shattered dream."	Sadness	1
+"The surprise announcement changed the course of my life."	Surprise	1
+"Fear shadows the thoughts of what might go wrong."	Fear	1
+"The joy of hearing good news is like sunshine on a r1ny day."	Joy	0
+"The heated argument left me filled with anger."	Anger	0
+"Love grows where understanding and patience take root."	Love	0
+"Sadness wells up when cherished things are lost."	Sadness	0
+"The surprise appearance of the r1nbow lifted my spirits."	Surprise	0
+"Fear tightened its grip as the floor creaked beneath me."	Fear	0
+"Joy radiates through the laughter of a child."	Joy	1
+"Anger burns like embers w1ting to ignite a fire."	Anger	1
+"Love flows in the simple act of holding hands."	Love	1
+"Sadness envelops the heart in moments of farewell."	Sadness	1
+"The surprise recognition at work was humbling."	Surprise	1
+"Fear hid in the corners of the darkened room."	Fear	1
+"The joy of solving a tough problem is exhilarating."	Joy	0
+"The disrespectful tone fueled a growing anger in me."	Anger	0
+"Love blossoms when trust and care nurture it."	Love	0
+"Sadness clouds the joy of remembering what once was."	Sadness	0
+"The surprise bouquet on my doorstep brought pure happiness."	Surprise	0
+"Fear loomed large as the unfamiliar surroundings closed in."	Fear	0
+"Joy spills over in the warmth of shared memories."	Joy	1
+"Anger simmers when promises are carelessly broken."	Anger	1
+"Love is the echo of a heart calling out for another."	Love	1
+"Sadness weaves through the threads of lonely nights."	Sadness	1
+"The surprise emit rekindled an old connection."	Surprise	1
+"Fear whispered doubts in the quiet of the night."	Fear	1
+"The joy of seeing someone you love succeed is unparalleled."	Joy	0
+"Anger flared up as I read the unf1r critique."	Anger	0
+"Love shines brightest in acts of selflessness."	Love	0
+"Sadness floods the soul in moments of regret."	Sadness	0
+"The surprise gift brought warmth to my heart."	Surprise	0
+"Fear crept up as the unfamiliar noise grew louder."	Fear	0
+"Joy feels like a hug from the universe itself."	Joy	1
+"Anger sparks like flint when trust is betrayed."	Anger	1
+"Love dances like fireflies on a warm summer night."	Love	1
+"Sadness hums in the silence of a lonely room."	Sadness	1
+"The surprise promotion left me speechless and grateful."	Surprise	1
+"Fear echoed in the depths of the unknown forest."	Fear	1
+"The joy of a simple smile can brighten the darkest day."	Joy	0
+"Anger surged as I discovered the deliberate deception."	Anger	0
+"Love is a sanctuary where the soul finds peace."	Love	1
+"Sadness drips like rain from the edges of my heart."	Sadness	1
+"The surprise confession left me breathless and amazed."	Surprise	0
+"Fear tightened its grip as the storm's howl grew louder."	Fear	0
+"The joy of reuniting with an old friend is incomparable."	Joy	1
+"Anger erupted like a volcano after years of silence."	Anger	1

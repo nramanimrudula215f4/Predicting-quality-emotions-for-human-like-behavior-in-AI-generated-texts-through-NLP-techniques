@@ -1,0 +1,869 @@
+from google.colab import drive
+
+# Mount Google Drive (only if using files from Drive)
+drive.mount('/content/drive')
+
+-------------------------------------------------------------------------------
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.pipeline import Pipeline
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report
+import torch
+
+import pandas as pd
+-----------------------------------------------------------------------------
+# Load the CSV file into a Pandas DataFrame
+df = pd.read_csv("/content/drive/MyDrive/Major Project/500.csv", encoding='latin-1')
+-------------------------------------------------------------------------------
+# Extract the text and label columns
+texts = df["Text"].tolist()
+labels = df["Label"].tolist()
+---------------------------------------------------------
+# Check the data
+print(f"Number of samples: {len(texts)}")
+print(f"First text: {texts[0]}")
+print(f"First label: {labels[0]}")
+-----------------------------------------------------------------
+# Continue with your training pipeline
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.pipeline import Pipeline
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report
+-----------------------------------------------------------------------------
+# Split the data
+X_train, X_test, y_train, y_test = train_test_split(texts, labels, test_size=0.2, random_state=42)
+
+# Define and train the pipeline
+ai_human_pipeline = Pipeline([
+    ('tfidf', TfidfVectorizer()),
+    ('classifier', RandomForestClassifier(n_estimators=100, random_state=42))
+])
+ai_human_pipeline.fit(X_train, y_train)
+-----------------------------------------------------------------------------
+# Evaluate the AI vs Human classifier
+y_pred = ai_human_pipeline.predict(X_test)
+print("AI vs Human Classification Report:\n")
+print(classification_report(y_test, y_pred))
+-------------------------------------------------------------------
+
+# Define AI vs Human Labels
+ai_human_labels = ["Human Generated", "AI Generated"]
+
+# Function for AI vs Human Classification
+def classify_ai_or_human(text):
+    prediction = ai_human_pipeline.predict([text])[0]
+    return ai_human_labels[prediction]
+
+# Integrated Function for Both Tasks
+def classify_text(sentence):
+    # AI vs Human classification
+    ai_human_result = classify_ai_or_human(sentence)
+
+
+    # Display results
+    print(f"Text: {sentence}")
+    print(f"AI or Human: {ai_human_result}")
+
+-----------------------------------------------------------------
+# Step 4: Example Usage
+input_sentence = input("Enter a sentence: ")
+classify_text(input_sentence)
+---------------------------------------------------------------------
+
+
+input_sentence = input("Enter a sentence: ")
+classify_text(input_sentence)
+
+-----------------------------------------------------------------------
+
+!pip install -q transformers
+#!pip install -q datasets
+!pip install -U datasets fsspec
+
+--------------------------------------------------------------------
+
+from datasets import load_dataset
+emotions = load_dataset("emotion")
+
+-----------------------------------------------------------------------------
+
+import torch
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+
+-----------------------------------------------------------------------------------------
+
+from transformers import AutoTokenizer
+
+model_name = "bert-base-uncased"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+
+def tokenize(batch):
+    return tokenizer(batch["text"], padding=True, truncation=True)
+
+
+
+emotions_encoded = emotions.map(tokenize, batched=True, batch_size=None)
+
+from transformers import AutoModelForSequenceClassification
+num_labels = 6
+model = (AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=num_labels).to(device))
+
+-----------------------------------------------------------------------------------------------------------
+  
+emotions_encoded["train"].features
+
+
+emotions_encoded.set_format("torch", columns=["input_ids", "attention_mask", "label"])
+emotions_encoded["train"].features
+
+--------------------------------------------------------------------------
+
+from sklearn.metrics import accuracy_score, f1_score
+
+def compute_metrics(pred):
+    labels = pred.label_ids
+    preds = pred.predictions.argmax(-1)
+    f1 = f1_score(labels, preds, average="weighted")
+    acc = accuracy_score(labels, preds)
+    return {"accuracy": acc, "f1": f1}
+
+---------------------------------------------------------------------------------
+from transformers import Trainer, TrainingArguments
+
+batch_size = 64
+logging_steps = len(emotions_encoded["train"]) // batch_size
+training_args = TrainingArguments(
+    output_dir="results",
+    num_train_epochs=8,
+    learning_rate=2e-5,
+    per_device_train_batch_size=batch_size,
+    per_device_eval_batch_size=batch_size,
+    load_best_model_at_end=True,
+    metric_for_best_model="f1",
+    weight_decay=0.01,
+    eval_strategy="epoch",  # Changed from evaluation_strategy to eval_strategy
+    save_strategy="epoch",  # Changed from "no" to "epoch" or "steps" based on your preference
+    disable_tqdm=False
+)
+
+---------------------------------------------------------------------------
+
+pip install wandb
+--------------------------------------------------------------------------
+
+!pip install -U transformers
+
+-------------------------------------------------------------------------
+from transformers import TrainingArguments
+---------------------------------------------------------------------------
+training_args = TrainingArguments(
+    output_dir="./results",
+    num_train_epochs=1,
+    per_device_train_batch_size=16,
+    per_device_eval_batch_size=64,
+    eval_strategy="epoch", # Changed from evaluation_strategy to eval_strategy
+    logging_dir="./logs",
+    report_to="none"
+)
+
+
+----------------------------------------------------------------------------
+
+from transformers import Trainer, TrainingArguments
+
+# Define training arguments with report_to set to "none"
+training_args = TrainingArguments(
+    output_dir="./results",  # Directory to save model checkpoints and logs
+    num_train_epochs=1,
+    per_device_train_batch_size=32,
+    per_device_eval_batch_size=32,
+    logging_dir="./logs",
+    logging_steps=10,
+    eval_strategy="epoch", # Changed from evaluation_strategy to eval_strategy
+    save_strategy="epoch",
+    report_to="none"  # Disable reporting to integrations like W&B
+)
+
+# Continue with your Trainer setup and training
+trainer = Trainer(
+    model=model,
+    args=training_args,
+    compute_metrics=compute_metrics,
+    train_dataset=emotions_encoded["train"],
+    eval_dataset=emotions_encoded["validation"]
+)
+
+# Start training
+trainer.train()
+
+----------------------------------------------------------------------
+
+
+results = trainer.evaluate()
+------------------------------------------------------------------------
+
+preds_output = trainer.predict(emotions_encoded["validation"])
+preds_output.metrics
+--------------------------------------------------------------------------
+
+import numpy as np
+from sklearn.metrics import ConfusionMatrixDisplay, confusion_matrix
+
+# Generate the confusion matrix
+y_valid = np.array(emotions_encoded["validation"]["label"])
+y_preds = np.argmax(preds_output.predictions, axis=1)
+labels = ['sadness', 'joy', 'love', 'anger', 'fear', 'surprise']
+cm = confusion_matrix(y_valid, y_preds, labels=range(len(labels)))
+
+# Plot the confusion matrix
+disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=labels)
+disp.plot(cmap='Blues')
+---------------------------------------------------------------------------------
+
+
+model.save_pretrained('./model')
+tokenizer.save_pretrained('./model')
+
+-----------------------------------------------------------------------------------
+
+from google.colab import drive
+
+# Mount Google Drive
+drive.mount('/content/drive')
+
+# Define a directory to save the model and tokenizer
+save_directory = "/content/drive/MyDrive/emotion_model"
+
+# Save the model and tokenizer
+model.save_pretrained(save_directory)
+tokenizer.save_pretrained(save_directory)
+
+print(f"Model and tokenizer saved to {save_directory}")
+
+
+-------------------------------------------------------------------------------
+
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
+import torch
+
+# Define the directory where the model and tokenizer are saved
+save_directory = "/content/drive/MyDrive/emotion_model"
+
+# Load the saved model and tokenizer
+model = AutoModelForSequenceClassification.from_pretrained(save_directory)
+tokenizer = AutoTokenizer.from_pretrained(save_directory)
+
+# Load the model onto the device
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model.to(device)
+
+# Define a function for emotion prediction
+def predict_emotion(text):
+    inputs = tokenizer(text, return_tensors="pt", padding=True, truncation=True)
+    inputs = {key: value.to(device) for key, value in inputs.items()}
+    new_labels = ['sadness', 'joy', 'love', 'anger', 'fear', 'surprise', 'stress']
+    with torch.no_grad():
+        logits = model(**inputs).logits
+    predicted_class = logits.argmax(dim=-1).item()
+    return new_labels[predicted_class]
+---------------------------------------------------------------------------------
+# Test on new text
+test_text = "Her smile always makes me feel so loved"
+predicted_emotion = predict_emotion(test_text)
+print(f"Predicted Emotion: {predicted_emotion}")
+
+-----------------------------------------------------------------------------
+
+
+  # Test the model on a sample text
+test_text = "I am very tired"
+predicted_emotion = predict_emotion(test_text)
+print(f"Predicted Emotion: {predicted_emotion}")
+
+
+
+----------------------------------------------------------------------------------
+
+# Step 3: Define Prediction Functions
+# Function for Emotion Prediction
+def predict_emotion(text):
+    inputs = tokenizer(text, return_tensors="pt", padding=True, truncation=True)
+    inputs = {key: value.to(device) for key, value in inputs.items()}
+    with torch.no_grad():
+        logits = model(**inputs).logits
+    predicted_class = logits.argmax(dim=-1).item()
+    return labels[predicted_class]
+
+# Function for AI vs Human Classification
+def classify_ai_or_human(text):
+    prediction = ai_human_pipeline.predict([text])[0]
+    return ai_human_labels[prediction]
+
+# Integrated Function for Both Tasks
+def classify_text_and_predict_emotion(sentence):
+    # AI vs Human classification
+    ai_human_result = classify_ai_or_human(sentence)
+    print(f"Text: {sentence}")
+    print(f"AI or Human: {ai_human_result}")
+
+    # Emotion prediction
+    if ai_human_result == "Human Generated":
+      emotion_result = predict_emotion(sentence)
+      print(f"Predicted Emotion: {emotion_result}")
+
+    # Display results
+    else:
+        print("Emotion prediction skipped for AI-generated text.")
+-----------------------------------------------------------------------
+# Step 4: Example Usage
+input_sentence = input("Enter a sentence: ")
+classify_text_and_predict_emotion(input_sentence)
+
+
+input_sentence = input("Enter a sentence: ")
+classify_text_and_predict_emotion(input_sentence)
+
+
+-----------------------------------------------------------------------------
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.metrics import classification_report, confusion_matrix, ConfusionMatrixDisplay
+
+# Evaluation Function
+def evaluate_models(ai_human_labels_true, ai_human_labels_pred, emotion_labels_true, emotion_labels_pred):
+    # AI vs Human Classification Metrics
+    ai_human_report = classification_report(ai_human_labels_true, ai_human_labels_pred, output_dict=True)
+    print("AI vs Human Classification Report:")
+    print(classification_report(ai_human_labels_true, ai_human_labels_pred))
+
+    # Emotion Prediction Metrics
+    emotion_report = classification_report(emotion_labels_true, emotion_labels_pred, output_dict=True)
+    print("Emotion Prediction Report:")
+    print(classification_report(emotion_labels_true, emotion_labels_pred))
+
+    # Combined Metrics Visualization
+    metrics = ["precision", "recall", "f1-score"]
+    ai_human_categories = list(ai_human_report.keys())[:-3]  # Exclude 'accuracy', 'macro avg', 'weighted avg'
+    emotion_categories = list(emotion_report.keys())[:-3]
+
+    combined_categories = ai_human_categories + emotion_categories
+    combined_metrics = []
+
+    for cat in ai_human_categories:
+        combined_metrics.append([ai_human_report[cat][metric] for metric in metrics])
+
+    for cat in emotion_categories:
+        combined_metrics.append([emotion_report[cat][metric] for metric in metrics])
+
+    combined_metrics = np.array(combined_metrics).T
+
+    x = np.arange(len(combined_categories))
+    width = 0.2
+
+    fig, ax = plt.subplots(figsize=(15, 8))
+    for i, metric in enumerate(metrics):
+        ax.bar(x + i * width, combined_metrics[i], width, label=metric)
+
+    ax.set_xticks(x + width)
+    ax.set_xticklabels(combined_categories, rotation=45, ha="right")
+    ax.set_ylabel("Scores")
+    ax.set_title("Combined Metrics for AI vs Human and Emotion Prediction")
+    ax.legend()
+    plt.tight_layout()
+    plt.show()
+
+    # Confusion Matrices
+    fig, axes = plt.subplots(1, 2, figsize=(15, 6))
+
+    # AI vs Human Confusion Matrix
+    cm_ai_human = confusion_matrix(ai_human_labels_true, ai_human_labels_pred)
+    ConfusionMatrixDisplay(cm_ai_human).plot(ax=axes[0], cmap="Blues")
+    axes[0].set_title("AI vs Human Confusion Matrix")
+
+    # Emotion Prediction Confusion Matrix
+    cm_emotion = confusion_matrix(emotion_labels_true, emotion_labels_pred)
+    ConfusionMatrixDisplay(cm_emotion).plot(ax=axes[1], cmap="Blues")
+    axes[1].set_title("Emotion Prediction Confusion Matrix")
+
+    plt.tight_layout()
+    plt.show()
+-----------------------------------------------------------------------
+# Example Usage
+def example_usage():
+    # Replace these with your test labels and predictions
+    ai_human_labels_true = [0, 1, 1, 0, 1, 0]  # Ground truth for AI vs Human
+    ai_human_labels_pred = [0, 1, 0, 0, 1, 1]  # Predictions for AI vs Human
+
+    emotion_labels_true = [2, 0, 1, 3, 1, 2]  # Ground truth for Emotion Prediction
+    emotion_labels_pred = [2, 0, 1, 3, 0, 2]  # Predictions for Emotion Prediction
+
+    evaluate_models(ai_human_labels_true, ai_human_labels_pred, emotion_labels_true, emotion_labels_pred)
+
+# Call the example usage function
+example_usage()
+
+
+--------------------------------------------------------------------
+
+
+
+pip install llama-cpp-python
+
+--------------------------------------------------------------------------
+!pip install llama-cpp-python --force-reinstall --no-cache-dir --extra-index-url https://jllllll.github.io/llama-cpp-python-cuBLAS-wheels/AVX2
+
+----------------------------------------------------------------------------
+!wget https://huggingface.co/TheBloke/zephyr-7B-alpha-GGUF/resolve/main/zephyr-7b-alpha.Q4_K_M.gguf -O zephyr-7b.q4k.gguf
+-----------------------------------------------------------------------------
+
+from llama_cpp import Llama
+
+# Load model (adjust path if you renamed or uploaded)
+llm = Llama(model_path="zephyr-7b.q4k.gguf", n_ctx=2048, n_threads=4)
+
+---------------------------------------------------------------------------------
+
+def chat_with_llama(user_input):
+    prompt = (
+        "<|system|>You are a compassionate AI who understands human emotions.<|end|>\n"
+        f"<|user|>{user_input}<|end|>\n"
+        "<|assistant|>"
+    )
+
+    output = llm(prompt, max_tokens=200, temperature=0.7, top_p=0.95)
+    return output['choices'][0]['text'].strip()
+------------------------------------------------------------------------------------
+
+
+chat_with_llama("I hate to eat junk food.")
+
+-------------------------------------------------------------------------
+
+chat_with_llama("I'm feeling really anxious about my exams and can't sleep.")
+
+-----------------------------------------------------------------------
+
+
+# Step 3: Define Prediction Functions
+# Function for Emotion Prediction
+def predict_emotion(text):
+    inputs = tokenizer(text, return_tensors="pt", padding=True, truncation=True)
+    inputs = {key: value.to(device) for key, value in inputs.items()}
+    with torch.no_grad():
+        logits = model(**inputs).logits
+    predicted_class = logits.argmax(dim=-1).item()
+    return labels[predicted_class]
+
+# Function for AI vs Human Classification
+def classify_ai_or_human(text):
+    prediction = ai_human_pipeline.predict([text])[0]
+    return ai_human_labels[prediction]
+
+# Integrated Function for Both Tasks
+def classify_text_and_predict_emotion(sentence):
+    # AI vs Human classification
+    ai_human_result = classify_ai_or_human(sentence)
+    print(f"Text: {sentence}")
+    print(f"AI or Human: {ai_human_result}")
+
+    # Emotion prediction
+    if ai_human_result == "Human Generated":
+      emotion_result = predict_emotion(sentence)
+      print(f"Predicted Emotion: {emotion_result}")
+
+    # Display results
+    else:
+        print("Emotion prediction skipped for AI-generated text.")
+----------------------------------------------------------------------
+# Step 4: Example Usage
+input_sentence = input("Enter a sentence: ")
+classify_text_and_predict_emotion(input_sentence)
+
+
+-----------------------------------------------------------------
+
+chat_with_llama("I am very tired.")
+
+--------------------------------------------------------------------
+
+# Step 3: Define Prediction Functions
+# Function for Emotion Prediction
+def predict_emotion(text):
+    inputs = tokenizer(text, return_tensors="pt", padding=True, truncation=True)
+    inputs = {key: value.to(device) for key, value in inputs.items()}
+    with torch.no_grad():
+        logits = model(**inputs).logits
+    predicted_class = logits.argmax(dim=-1).item()
+    return labels[predicted_class]
+
+# Function for AI vs Human Classification
+def classify_ai_or_human(text):
+    prediction = ai_human_pipeline.predict([text])[0]
+    return ai_human_labels[prediction]
+
+# Integrated Function for Both Tasks
+def classify_text_and_predict_emotion(sentence):
+    # AI vs Human classification
+    ai_human_result = classify_ai_or_human(sentence)
+    print(f"Text: {sentence}")
+    print(f"AI or Human: {ai_human_result}")
+
+    # Emotion prediction
+    if ai_human_result == "Human Generated":
+      emotion_result = predict_emotion(sentence)
+      print(f"Predicted Emotion: {emotion_result}")
+
+    # Display results
+    else:
+        print("Emotion prediction skipped for AI-generated text.")
+
+# Step 4: Example Usage
+input_sentence = input("Enter a sentence: ")
+classify_text_and_predict_emotion(input_sentence)
+
+chat_with_llama(input_sentence)
+
+
+-------------------------------------------------------------------------
+# Install if not already installed
+!pip install -q sentence-transformers
+
+from sentence_transformers import SentenceTransformer, util
+
+# Load the pre-trained Sentence-BERT model
+model = SentenceTransformer('all-MiniLM-L6-v2')
+
+# Define your inputs
+text1 = "I am very tired."
+text2 = """I understand that you're feeling very tired. Do you need any help or support? Maybe I can assist you in finding a comfortable place to rest or suggest some relaxation techniques to help you feel more refreshed. Let me know if there's anything I can do for you."""
+
+# Encode both texts
+embeddings = model.encode([text1, text2], convert_to_tensor=True)
+
+# Compute cosine similarity
+similarity_score = util.pytorch_cos_sim(embeddings[0], embeddings[1]).item()
+
+# Display result
+print(f"🧠 Semantic Similarity Score: {similarity_score:.4f}")
+
+---------------------------------------------------------------------
+
+
+
+import matplotlib.pyplot as plt
+from sentence_transformers import SentenceTransformer, util
+
+# Load SBERT model
+model = SentenceTransformer('all-MiniLM-L6-v2')
+
+# Example pair
+human_text = "I am very tired."
+ai_text = """I understand that you're feeling very tired. Do you need any help or support? Maybe I can assist you in finding a comfortable place to rest or suggest some relaxation techniques to help you feel more refreshed. Let me know if there's anything I can do for you."""
+
+# Encode texts and compute similarity
+embeddings = model.encode([human_text, ai_text], convert_to_tensor=True)
+similarity_score = util.pytorch_cos_sim(embeddings[0], embeddings[1]).item()
+
+# Values to plot
+labels = ['Human Text', 'AI Response', 'Similarity']
+values = [1.0, 1.0, similarity_score]  # Set 1.0 for texts (just to show them equally), real info in similarity
+
+# Plot
+plt.figure(figsize=(8, 6))
+bars = plt.bar(labels, values, color=['skyblue', 'lightgreen', 'salmon'])
+
+# Annotate bars
+for bar, val in zip(bars, values):
+    plt.text(bar.get_x() + bar.get_width()/2, val + 0.02,
+             f"{val:.2f}", ha='center', fontsize=12, fontweight='bold')
+
+plt.ylim(0, 1.2)
+plt.title("Human-AI Text and Their Semantic Similarity")
+plt.ylabel("Value")
+plt.grid(axis='y', linestyle='--', alpha=0.5)
+plt.tight_layout()
+plt.show()
+
+
+-------------------------------------------------------------------
+
+
+from sentence_transformers import SentenceTransformer, util
+
+# Load the Sentence-BERT model for encoding
+sbert_model = SentenceTransformer('all-MiniLM-L6-v2')
+
+# Encode both texts using the SBERT model
+# Assuming 'Text' and 'AI_Text' variables are defined in the environment
+embeddings = sbert_model.encode([input_sentence, ai_text], convert_to_tensor=True)
+
+# Compute cosine similarity
+similarity_score = util.pytorch_cos_sim(embeddings[0], embeddings[1]).item()
+
+# Display result
+print(f"🧠 Semantic Similarity Score: {similarity_score:.4f}")
+
+------------------------------------------------------------
+
+!pip install gradio
+
+-----------------------------------------------------------
+# ===============================
+# 1. Install Dependencies
+# ===============================
+!pip install llama-cpp-python
+!pip install gradio sentence-transformers transformers scikit-learn pandas
+
+# ===============================
+# 2. Import Libraries
+# ===============================
+import pandas as pd
+import torch
+import re
+import torch.nn.functional as F
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.pipeline import Pipeline
+from sklearn.model_selection import train_test_split
+
+from sentence_transformers import SentenceTransformer, util
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+from llama_cpp import Llama
+import gradio as gr
+
+# ===============================
+# 3. Load Dataset and Train Classifier
+# ===============================
+df = pd.read_csv("/content/drive/MyDrive/Major Project/500.csv", encoding='latin-1')
+texts = df["Text"].tolist()
+labels = df["Label"].tolist()
+
+X_train, X_test, y_train, y_test = train_test_split(texts, labels, test_size=0.2, random_state=42)
+
+ai_human_pipeline = Pipeline([
+    ('tfidf', TfidfVectorizer()),
+    ('classifier', RandomForestClassifier(n_estimators=100, random_state=42))
+])
+ai_human_pipeline.fit(X_train, y_train)
+ai_human_labels = ["Human Generated", "AI Generated"]
+
+# ===============================
+# 4. Load Zephyr GGUF Model
+# ===============================
+llm = Llama(
+    model_path="/content/zephyr-7b.q4k.gguf",
+    n_ctx=2048,
+    n_threads=4,
+    n_gpu_layers=20
+)
+
+# ===============================
+# 5. Load Embedding Model
+# ===============================
+embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
+embedding_cache = {}
+
+# ===============================
+# 6. Load Emotion Model
+# ===============================
+emotion_model_name = "nateraw/bert-base-uncased-emotion"
+emotion_tokenizer = AutoTokenizer.from_pretrained(emotion_model_name)
+emotion_model = AutoModelForSequenceClassification.from_pretrained(emotion_model_name)
+emotion_model.eval()
+emotion_labels = ['sadness', 'joy', 'love', 'anger', 'fear', 'surprise']
+
+# ===============================
+# 7. Helper Functions
+# ===============================
+def trim_to_first_sentence(text):
+    match = re.search(r"(.+?[.!?])", text)
+    return match.group(1).strip() if match else text.strip()
+
+def get_llama_response(prompt):
+    system_prompt = "You are a helpful and empathetic AI assistant."
+    full_prompt = f"<|system|>\n{system_prompt}\n<|user|>\n{prompt}\n<|assistant|>\n"
+    response = llm(full_prompt, max_tokens=80, temperature=0.7, stop=["<|user|>", "<|system|>"])
+    return trim_to_first_sentence(response["choices"][0]["text"].strip())
+
+def classify_ai_or_human(text):
+    prediction = ai_human_pipeline.predict([text])[0]
+    return ai_human_labels[prediction]
+
+def compute_similarity(text1, text2):
+    if text1 not in embedding_cache:
+        embedding_cache[text1] = embedding_model.encode(text1, convert_to_tensor=True)
+    if text2 not in embedding_cache:
+        embedding_cache[text2] = embedding_model.encode(text2, convert_to_tensor=True)
+    score = util.cos_sim(embedding_cache[text1], embedding_cache[text2]).item()
+    return f"{score:.2f}"
+
+def predict_emotion(text):
+    inputs = emotion_tokenizer(text, return_tensors="pt", truncation=True, padding=True)
+    with torch.no_grad():
+        outputs = emotion_model(**inputs)
+    probs = F.softmax(outputs.logits, dim=-1)
+    top_idx = torch.argmax(probs, dim=1).item()
+    top_emotion = emotion_labels[top_idx]
+    confidence = probs[0, top_idx].item()
+    return f"{top_emotion} ({confidence:.2f})"
+
+# ===============================
+# 8. Gradio GUI - Centered with Colored Pages
+# ===============================
+with gr.Blocks() as demo:
+    gr.HTML("""
+        <style>
+            body {
+                background-color: #ffffff;
+                margin: 0;
+                padding: 0;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            .gradio-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                padding: 20px;
+            }
+
+            .page1 {
+                background-color: #f0f4f8;
+                padding: 30px;
+                border-radius: 20px;
+                width: 100%;
+                max-width: 700px;
+            }
+
+            .page2 {
+                background-color: #e6f7ff;
+                padding: 30px;
+                border-radius: 20px;
+                width: 100%;
+                max-width: 700px;
+            }
+
+            .page3 {
+                background-color: #fff3e6;
+                padding: 30px;
+                border-radius: 20px;
+                width: 100%;
+                max-width: 700px;
+            }
+
+            .gr-button {
+                background-color: #4CAF50 !important;
+                color: white !important;
+                border: none;
+                padding: 10px 20px;
+                margin: 5px;
+                border-radius: 10px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            .gr-textbox textarea {
+                background-color: #ffffff !important;
+                border: 1px solid #ccc !important;
+                border-radius: 8px;
+                padding: 8px;
+            }
+        </style>
+        <div class="gradio-container">
+    """)
+
+    gr.Markdown("## 🤖 Emotion Quality Prediction")
+
+    state_input = gr.State()
+    state_label = gr.State()
+    state_emotion = gr.State()
+    state_response = gr.State()
+    state_similarity = gr.State()
+
+    # Page 1 - Input
+    with gr.Group(visible=True, elem_classes=["page1"]) as input_page:
+        input_text = gr.Textbox(lines=4, label="Enter Your Text")
+        next_btn1 = gr.Button("Emotion Classification →")
+
+    # Page 2 - Classification + Emotion
+    with gr.Group(visible=False, elem_classes=["page2"]) as result_page_2:
+        label_output = gr.Textbox(label="Classification Result", interactive=False)
+        emotion_output = gr.Textbox(label="Predicted Emotion", interactive=False)
+        next_btn2 = gr.Button("AI Response →")
+        back_btn2 = gr.Button("← Back")
+
+    # Page 3 - AI Response + Similarity
+    with gr.Group(visible=False, elem_classes=["page3"]) as result_page_3:
+        input_display = gr.Textbox(label="Your Input", interactive=False)
+        ai_response_output = gr.Textbox(label="AI Response", interactive=False)
+        similarity_output = gr.Textbox(label="Semantic Similarity Score", interactive=False)
+        back_btn3 = gr.Button("← Back")
+
+    def go_to_page2(text):
+        label = classify_ai_or_human(text)
+        emotion = predict_emotion(text)
+        return (
+            gr.update(visible=False),
+            gr.update(visible=True),
+            text,
+            label,
+            emotion,
+            gr.update(value=label),
+            gr.update(value=emotion)
+        )
+
+    next_btn1.click(
+        fn=go_to_page2,
+        inputs=input_text,
+        outputs=[
+            input_page,
+            result_page_2,
+            state_input,
+            state_label,
+            state_emotion,
+            label_output,
+            emotion_output
+        ]
+    )
+
+    def go_to_page3(text, _label, _emotion):
+        ai_resp = get_llama_response(text)
+        similarity = compute_similarity(text, ai_resp)
+        return (
+            gr.update(visible=False),
+            gr.update(visible=True),
+            text,
+            ai_resp,
+            similarity
+        )
+
+    next_btn2.click(
+        fn=go_to_page3,
+        inputs=[state_input, state_label, state_emotion],
+        outputs=[result_page_2, result_page_3, input_display, ai_response_output, similarity_output]
+    )
+
+    back_btn2.click(
+        fn=lambda: (gr.update(visible=True), gr.update(visible=False)),
+        inputs=[],
+        outputs=[input_page, result_page_2]
+    )
+
+    back_btn3.click(
+        fn=lambda: (gr.update(visible=True), gr.update(visible=False)),
+        inputs=[],
+        outputs=[result_page_2, result_page_3]
+    )
+
+    gr.HTML("</div>")  # Close gradio-container div
+
+# ===============================
+# 9. Launch App
+# ===============================
+demo.launch(share=True)
